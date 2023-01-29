@@ -1,0 +1,312 @@
+1. 
+class Main { 
+static boolean chkPair(int A[], int size, int x) 
+{ 
+for (int i = 0; i < (size - 1); i++) { 
+for (int j = (i + 1); j < size; j++) { 
+if (A[i] + A[j] == x) { 
+return true; 
+} 
+} 
+} 
+ 
+return false; 
+} 
+ 
+public static void main(String[] args) 
+{ 
+ 
+int A[] = { 0, -1, 2, -3, 1 }; 
+int x = -2; 
+int size = A.length; 
+ 
+if (chkPair(A, size, x)) { 
+System.out.println("Yes"); 
+} 
+else { 
+System.out.println("No"); 
+} 
+} 
+} 
+ 
+2. 
+ 
+class Array { 
+public static void main(String[] args) { 
+int a[]={1,423,6,46,34,23,13,53,4}; 
+Arrays.sort(a); 
+System.out.println("min-"+a[0]+" max-"+a[a.length-1]); 
+} 
+} 
+ 
+3. 
+ 
+class Node { 
+Object data; 
+Node next; 
+Node(Object d,Node n) { 
+data = d ; 
+next = n ; 
+} 
+ 
+public static Node addLast(Node header, Object x) { 
+Node ret = header; 
+if (header == null) { 
+return new Node(x, null); 
+} 
+ 
+while ((header.next != null)) { 
+header = header.next; 
+} 
+header.next = new Node(x, null); 
+return ret; 
+} 
+} 
+ 
+4. 
+ 
+class Main { 
+static void reverse(char str[], int start, int end) 
+{ 
+char temp; 
+ 
+while (start <= end) { 
+temp = str[start]; 
+str[start] = str[end]; 
+str[end] = temp; 
+start++; 
+end--; 
+} 
+} 
+static char[] reverseWords(char[] s) 
+{ 
+ 
+int start = 0; 
+for (int end = 0; end < s.length; end++) { 
+if (s[end] == ' ') { 
+reverse(s, start, end); 
+start = end + 1; 
+} 
+} 
+ 
+reverse(s, start, s.length - 1); 
+reverse(s, 0, s.length - 1); 
+return s; 
+} 
+public static void main(String[] args) 
+{ 
+String s = "i like this program very much "; 
+char[] p = reverseWords(s.toCharArray()); 
+System.out.print(p); 
+} 
+} 
+ 
+5. 
+ 
+ 
+public class Find 
+{ 
+static void palindromeSubStrs(String s) 
+{ 
+TreeMap<String , Integer> m = new TreeMap<>(); 
+int n = s.length(); 
+int[][] R = new int[2][n+1]; 
+s = "@" + s + "#"; 
+ 
+for (int j = 0; j <= 1; j++) 
+{ 
+int rp = 0; 
+R[j][0] = 0; 
+ 
+int i = 1; 
+while (i <= n) 
+{ 
+while (s.charAt(i - rp - 1) == s.charAt(i + 
+j + rp)) 
+rp++; 
+R[j][i] = rp; 
+int k = 1; 
+while ((R[j][i - k] != rp - k) && (k < rp)) 
+{ 
+R[j][i + k] = Math.min(R[j][i - k], 
+rp - k); 
+k++; 
+} 
+rp = Math.max(rp - k,0); 
+i += k; 
+} 
+} 
+s = s.substring(1, s.length()-1); 
+m.put(s.substring(0,1), 1); 
+for (int i = 1; i < n; i++) 
+{ 
+for (int j = 0; j <= 1; j++) 
+for (int rp = R[j][i]; rp > 0; rp--) 
+m.put(s.substring(i - rp - 1, i - rp - 1 
++ 2 * rp + j), 1); 
+m.put(s.substring(i, i + 1), 1); 
+} 
+System.out.println("Below are " + (m.size()) 
++ " palindrome sub-strings"); 
+ 
+for (Map.Entry<String, Integer> ii:m.entrySet()) 
+System.out.println(ii.getKey()); 
+} 
+ 
+public static void main(String args[]) 
+{ 
+palindromeSubStrs("abaaa"); 
+} 
+} 
+ 
+6. 
+class Solution { 
+public static int totalFruits(int N, int[] fruits) { 
+ 
+int result=0; 
+int beg=0,end=0; 
+HashMap<Integer,Integer> map = new HashMap<>(); 
+ 
+while(end<N) 
+{ 
+if(map.containsKey(fruits[end])) 
+{ 
+map.put(fruits[end],map.get(fruits[end])+1); 
+} 
+else 
+{ 
+map.put(fruits[end],1); 
+while(map.size()>2) 
+{ 
+map.put(fruits[beg],map.get(fruits[beg])-1); 
+if(map.get(fruits[beg])==0)map.remove(fruits[beg]); 
+beg++; 
+} 
+} 
+result = result>end-beg+1?result:end-beg+1; 
+end++; 
+} 
+return result; 
+} 
+} 
+ 
+7. 
+class Main { 
+static boolean chkPair(int A[], int size, int x) 
+{ 
+for (int i = 0; i < (size - 1); i++) { 
+for (int j = (i + 1); j < size; j++) { 
+if (A[i] + A[j] == x) { 
+return true; 
+} 
+} 
+} 
+ 
+return false; 
+} 
+ 
+public static void main(String[] args) 
+{ 
+ 
+int A[] = { 0, -1, 2, -3, 1 }; 
+int x = -2; 
+int size = A.length; 
+ 
+if (chkPair(A, size, x)) { 
+System.out.println("Yes"); 
+} 
+else { 
+System.out.println("No"); 
+} 
+} 
+} 
+ 
+8. 
+ 
+class Main { 
+static boolean chkPair(int A[], int size, int x) 
+{ 
+for (int i = 0; i < (size - 1); i++) { 
+for (int j = (i + 1); j < size; j++) { 
+if (A[i] + A[j] == x) { 
+return true; 
+} 
+} 
+} 
+ 
+return false; 
+} 
+ 
+public static void main(String[] args) 
+{ 
+ 
+int A[] = { 0, -1, 2, -3, 1 }; 
+int x = -2; 
+int size = A.length; 
+ 
+if (chkPair(A, size, x)) { 
+System.out.println("Yes"); 
+} 
+else { 
+System.out.println("No"); 
+} 
+} 
+} 
+ 
+ 
+9. 
+ 
+class Main { 
+static void printNGE(int arr[], int n) 
+{ 
+int next, i, j; 
+for (i = 0; i < n; i++) { 
+next = -1; 
+for (j = i + 1; j < n; j++) { 
+if (arr[i] < arr[j]) { 
+next = arr[j]; 
+break; 
+} 
+} 
+System.out.println(arr[i] + " -- " + next); 
+} 
+} 
+ 
+public static void main(String args[]) 
+{ 
+int arr[] = { 11, 13, 21, 3 }; 
+int n = arr.length; 
+printNGE(arr, n); 
+} 
+} 
+ 
+10. 
+class Main { 
+static int removeDuplicates(int arr[], int n) 
+{ 
+if (n == 0 || n == 1) 
+return n; 
+ 
+int[] temp = new int[n]; 
+int j = 0; 
+for (int i = 0; i < n - 1; i++) 
+if (arr[i] != arr[i + 1]) 
+temp[j++] = arr[i]; 
+temp[j++] = arr[n - 1]; 
+for (int i = 0; i < j; i++) 
+arr[i] = temp[i]; 
+ 
+return j; 
+} 
+ 
+public static void main(String[] args) 
+{ 
+int arr[] = { 1, 2, 2, 3, 4, 4, 4, 5, 5 }; 
+int n = arr.length; 
+ 
+n = removeDuplicates(arr, n); 
+for (int i = 0; i < n; i++) 
+System.out.print(arr[i] + " "); 
+} 
+} 
+ 
